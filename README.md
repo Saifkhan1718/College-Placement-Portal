@@ -10,16 +10,16 @@
 
 ## 📸 Screenshots
 
-### 🏠 Landing Page
+### Landing Page
 ![Landing Page](screenshots/landing.png)
 
-### 📊 Platform Stats & Role Workflows
+### Platform Stats & Role Workflows
 ![Stats](screenshots/stats.png)
 
-### 📝 Student Registration
+### Student Registration
 ![Register](screenshots/register.png)
 
-### 🖥️ Student Dashboard
+### Student Dashboard
 ![Dashboard](screenshots/dashboard.png)
 
 ---
@@ -36,9 +36,9 @@
 
 ---
 
-## ✨ Features
+## Features
 
-### 👨‍🎓 Student
+### Student
 - Professional profile with resume upload
 - Browse, search & filter jobs
 - Apply and track application status (Applied → Shortlisted → Selected)
@@ -46,24 +46,24 @@
 - Placement Predictor based on CGPA, skills & projects
 - Skill gap analysis & readiness score
 
-### 🏢 Recruiter
+### Recruiter
 - Post, edit & manage job listings
 - View & shortlist applicants
 - Schedule interviews
 - Track hiring conversion metrics
 
-### 🏛️ Placement Officer (TPO)
+### Placement Officer (TPO)
 - Manage student eligibility
 - Approve recruiter job postings
 - Schedule campus drives
 - Department-wise placement analytics
 
-### 🔐 Admin
+### Admin
 - Full user & role management
 - Audit logs & security monitoring
 - System settings & access control
 
-### 🤖 Smart Features
+### Smart Features
 - AI Resume Analyzer (ATS Score + suggestions)
 - Placement Predictor
 - AI Chat Assistant for interview prep
@@ -72,7 +72,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -106,7 +106,7 @@
 | Backend | Render | https://college-placement-portal-fvu8.onrender.com |
 | Database | MongoDB Atlas | Cloud Hosted |
 
-> ⚠️ **Note:** The backend is on Render's free tier and may take ~50 seconds to wake up on first request after inactivity.
+> **Note:** The backend is on Render's free tier and may take ~50 seconds to wake up on first request after inactivity.
 
 ---
 
@@ -163,7 +163,7 @@ npm run dev
 ### 4. Open in Browser
 ---
 
-## 👥 User Roles
+## User Roles
 
 | Role | Access |
 |---|---|
