@@ -25,7 +25,7 @@ export const ResetPassword = () => {
     setMessage('');
 
     try {
-      const { data } = await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, { password });
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api' : 'https://college-placement-portal-fvu8.onrender.com/api')}/auth/reset-password/${token}`, { password });
       setMessage(data.message || 'Your password has been reset successfully!');
     } catch (err) {
       setError(err.response?.data?.message || 'Token is invalid or has expired. Try requesting a new link.');

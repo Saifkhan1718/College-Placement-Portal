@@ -16,7 +16,7 @@ export const SocketProvider = ({ children }) => {
 
     if (isAuthenticated && user) {
       // Connect to server
-      socketInstance = io('http://localhost:5000');
+      socketInstance = io(import.meta.env.VITE_BACKEND_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000' : 'https://college-placement-portal-fvu8.onrender.com'));
       
       // Join room
       socketInstance.emit('join', user._id);

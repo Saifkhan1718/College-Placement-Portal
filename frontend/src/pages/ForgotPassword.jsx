@@ -19,7 +19,7 @@ export const ForgotPassword = () => {
     setMessage('');
 
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api' : 'https://college-placement-portal-fvu8.onrender.com/api')}/auth/forgot-password`, { email });
       setMessage(data.message || 'Reset link sent! Please check your email inbox.');
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to send reset link. Try again.');

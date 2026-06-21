@@ -39,7 +39,7 @@ export const ManageJobs = () => {
 
   const [message, setMessage] = useState({ text: '', type: '' });
 
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api' : 'https://college-placement-portal-fvu8.onrender.com/api');
 
   const fetchRecruiterJobs = async () => {
     try {
