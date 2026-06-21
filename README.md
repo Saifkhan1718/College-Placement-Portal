@@ -224,11 +224,9 @@ College-Placement-Portal/
 ---
 
 ## 📬 Contact
-
 **Saif Khan**
 - GitHub: [@Saifkhan1718](https://github.com/Saifkhan1718)
 - Project Link: [College Placement Portal](https://github.com/Saifkhan1718/College-Placement-Portal)
-
 ---
 
 ⭐ If you found this project useful, please consider giving it a star!
