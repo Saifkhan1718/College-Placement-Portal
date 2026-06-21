@@ -1,4 +1,4 @@
-# 🎓 NexusPlacement — College Placement Portal
+# 🎓 SuccessAchievers — College Placement Portal
 
 > **AI-Powered College Placement Ecosystem** — Bridging Academics and Careers with Intelligent Analytics
 
@@ -26,7 +26,7 @@
 
 ## 🚀 About the Project
 
-**NexusPlacement** is a production-ready, full-stack College Placement Portal built with the MERN stack. It serves as a unified platform for Students, Recruiters, Training & Placement Officers (TPO), and Administrators — streamlining the entire campus recruitment lifecycle.
+**SuccessAchievers** is a production-ready, full-stack College Placement Portal built with the MERN stack. It serves as a unified platform for Students, Recruiters, Training & Placement Officers (TPO), and Administrators — streamlining the entire campus recruitment lifecycle.
 
 **Key Stats:**
 - 96% Placement Rate

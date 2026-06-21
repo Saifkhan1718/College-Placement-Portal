@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Sparkles, Mail, ArrowLeft, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Briefcase, Mail, ArrowLeft, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -40,7 +40,7 @@ export const ForgotPassword = () => {
       >
         <div className="flex flex-col items-center mb-8 text-center">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-2xl text-white mb-4">
-            <Sparkles className="w-6 h-6" />
+            <Briefcase className="w-6 h-6" />
           </div>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Forgot Password</h2>
           <p className="text-slate-400 text-sm mt-2">Recover your account password link</p>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Sparkles, Lock, ArrowLeft, KeyRound, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Briefcase, Lock, ArrowLeft, KeyRound, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const ResetPassword = () => {
   const { token } = useParams();
@@ -46,7 +46,7 @@ export const ResetPassword = () => {
       >
         <div className="flex flex-col items-center mb-8 text-center">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-2xl text-white mb-4">
-            <Sparkles className="w-6 h-6" />
+            <Briefcase className="w-6 h-6" />
           </div>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Reset Password</h2>
           <p className="text-slate-400 text-sm mt-2">Enter your new account password</p>

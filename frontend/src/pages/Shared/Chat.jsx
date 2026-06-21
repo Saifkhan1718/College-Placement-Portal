@@ -214,7 +214,7 @@ export const Chat = () => {
             >
               <h4 className="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                 <Megaphone className="w-4 h-4 text-brand-500" />
-                Nexus Broadcast Board
+                Success Broadcast Board
               </h4>
               <p className="text-[10px] text-slate-500 mt-1">Official announcements by TPO office.</p>
             </div>

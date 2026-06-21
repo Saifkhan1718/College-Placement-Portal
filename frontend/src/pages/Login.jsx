@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { login, googleAuthLogin, clearError } from '../store/authSlice.js';
 import { motion } from 'framer-motion';
-import { Sparkles, Mail, Lock, LogIn, AlertCircle } from 'lucide-react';
+import { Briefcase, Mail, Lock, LogIn, AlertCircle } from 'lucide-react';
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ export const Login = () => {
         {/* Brand Header */}
         <div className="flex flex-col items-center mb-8 text-center">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-2xl shadow-brand-500/30 text-white mb-4">
-            <Sparkles className="w-6 h-6" />
+            <Briefcase className="w-6 h-6" />
           </div>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Welcome Back</h2>
           <p className="text-slate-400 text-sm mt-2">Access the College Placement Control Center</p>

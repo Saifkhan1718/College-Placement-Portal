@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   BrainCircuit,
   Send,
-  Sparkles,
+  Briefcase,
   Bot,
   User,
   HelpCircle,
@@ -102,10 +102,10 @@ export const ChatAssistant = () => {
         {/* Chat Header */}
         <div className="px-5 py-4 border-b border-slate-200/50 dark:border-slate-800/50 flex items-center gap-2.5 bg-slate-50/20 dark:bg-slate-900/10 shrink-0">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 text-white flex items-center justify-center">
-            <Sparkles className="w-4 h-4" />
+            <Briefcase className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-xs font-bold text-slate-800 dark:text-white leading-none">Nexus Career AI</h3>
+            <h3 className="text-xs font-bold text-slate-800 dark:text-white leading-none">Success Career AI</h3>
             <span className="text-[9px] text-emerald-500 font-semibold block mt-1">Active Chat Assistant</span>
           </div>
         </div>

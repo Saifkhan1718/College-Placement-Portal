@@ -69,7 +69,7 @@ export const AiPredictor = () => {
           <h3 className="text-xs font-bold text-slate-800 dark:text-white mt-4 uppercase tracking-wider">
             Placement Probability
           </h3>
-          <p className="text-[10px] text-slate-400 mt-1">Nexus Predictive Engine v1.2</p>
+          <p className="text-[10px] text-slate-400 mt-1">Success Predictive Engine v1.2</p>
         </div>
 
         {/* Diagnosis analysis */}

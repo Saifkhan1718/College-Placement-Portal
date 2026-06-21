@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser, clearError } from '../store/authSlice.js';
 import { motion } from 'framer-motion';
-import { Sparkles, User, Mail, Lock, Phone, UserPlus, AlertCircle, Building, BookOpen, GraduationCap } from 'lucide-react';
+import { Briefcase, User, Mail, Lock, Phone, UserPlus, AlertCircle, Building, BookOpen, GraduationCap } from 'lucide-react';
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -81,7 +81,7 @@ export const Register = () => {
         {/* Header */}
         <div className="flex flex-col items-center mb-6 text-center">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 flex items-center justify-center shadow-2xl shadow-brand-500/30 text-white mb-4">
-            <Sparkles className="w-6 h-6" />
+            <Briefcase className="w-6 h-6" />
           </div>
           <h2 className="text-3xl font-extrabold text-white tracking-tight">Create Account</h2>
           <p className="text-slate-400 text-sm mt-2">Get started with the Placement Portal</p>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Sparkles,
+  Briefcase,
   ArrowRight,
   GraduationCap,
   Building,
@@ -38,10 +38,10 @@ export const LandingPage = () => {
       <header className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center relative z-10 border-b border-white/5 bg-slate-950/20 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 flex items-center justify-center shadow-lg shadow-brand-500/10">
-            <Sparkles className="w-5 h-5 text-white" />
+            <Briefcase className="w-5 h-5 text-white" />
           </div>
           <span className="font-extrabold text-lg bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
-            NexusPlacement
+            SuccessAchievers
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -204,7 +204,7 @@ export const LandingPage = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-[10px] font-bold text-accent-400 uppercase tracking-widest mb-6">
               <BrainCircuit className="w-3.5 h-3.5" />
-              Nexus Smart Engine
+              Success Smart Engine
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6">
               Equipped with Intelligent AI Analytics
@@ -285,7 +285,7 @@ export const LandingPage = () => {
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-6 py-12 relative z-10 text-center border-t border-white/5 text-slate-500 text-xs font-medium">
-        <p>© 2026 NexusPlacement College Portal. Built as a Senior Engineering Showcase.</p>
+        <p>© 2026 SuccessAchievers College Portal. Built as a Senior Engineering Showcase.</p>
       </footer>
     </div>
   );

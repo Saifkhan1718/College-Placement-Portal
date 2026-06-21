@@ -14,8 +14,7 @@ import {
   Settings,
   ShieldCheck,
   Building2,
-  LogOut,
-  Sparkles
+  LogOut
 } from 'lucide-react';
 
 export const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -92,11 +91,11 @@ export const Sidebar = ({ isOpen, toggleSidebar }) => {
         {/* Brand Header */}
         <div className="flex items-center gap-3 px-6 py-5 border-b border-slate-200/50 dark:border-slate-800/80">
           <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-500 shadow-lg shadow-brand-500/20 text-white">
-            <Sparkles className="w-5 h-5 animate-pulse" />
+            <Briefcase className="w-5 h-5 animate-pulse" />
           </div>
           <div>
             <h1 className="text-base font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-200">
-              NexusPlacement
+              SuccessAchievers
             </h1>
             <span className="text-[10px] font-semibold tracking-wider text-brand-600 dark:text-brand-400 uppercase">
               {user?.role} Portal
