@@ -75,11 +75,12 @@ export const register = async (req, res) => {
       <a href="${verifyUrl}" target="_blank">Verify Email Address</a>
       <p>If you did not register for this account, please ignore this email.</p>
     `;
-    await sendEmail({
+    // Send verification email in background to prevent blocking registration response
+    sendEmail({
       to: email,
       subject: 'Verify your College Placement Portal Account',
       html: emailHtml,
-    });
+    }).catch((err) => console.error('Background verification email failed:', err.message));
 
     res.status(201).json({
       message: 'Registration successful! Please check your email to verify your account.',
@@ -214,11 +215,12 @@ export const forgotPassword = async (req, res) => {
       <a href="${resetUrl}" target="_blank">Reset Password</a>
       <p>If you did not request this, please ignore this email.</p>
     `;
-    await sendEmail({
+    // Send reset email in background to prevent blocking reset request response
+    sendEmail({
       to: email,
       subject: 'Password Reset Request - College Placement Portal',
       html: emailHtml,
-    });
+    }).catch((err) => console.error('Background reset email failed:', err.message));
 
     res.json({ message: 'Password reset link sent to your email.' });
   } catch (error) {

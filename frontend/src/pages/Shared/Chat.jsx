@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export const Chat = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
   const { socket } = useSocket();
 
   const [activeTab, setActiveTab] = useState('announcements'); // 'announcements' or 'direct'
@@ -28,16 +28,23 @@ export const Chat = () => {
   const [newMessage, setNewMessage] = useState('');
   const [loadingMessages, setLoadingMessages] = useState(false);
 
-  const messagesEndRef = useRef(null);
+  const messageElRef = useRef(null);
   const API_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:5000/api' : 'https://college-placement-portal-fvu8.onrender.com/api');
+
+  // Helper to generate auth headers dynamically to prevent 401 token mismatch issues
+  const getAuthConfig = () => ({
+    headers: {
+      Authorization: `Bearer ${token || localStorage.getItem('token')}`,
+    },
+  });
 
   // Fetch announcements
   const fetchAnnouncements = async () => {
     try {
-      const { data } = await axios.get(`${API_URL}/chat/announcements`);
+      const { data } = await axios.get(`${API_URL}/chat/announcements`, getAuthConfig());
       setAnnouncements(data);
     } catch (e) {
-      console.error(e);
+      console.error('Error fetching TPO announcements:', e);
     }
   };
 
@@ -47,10 +54,10 @@ export const Chat = () => {
       let contactsRes;
       if (user.role === 'student') {
         // Students chat with recruiters
-        contactsRes = await axios.get(`${API_URL}/tpo/recruiters`);
+        contactsRes = await axios.get(`${API_URL}/tpo/recruiters`, getAuthConfig());
       } else {
         // Recruiters/TPO chat with students
-        contactsRes = await axios.get(`${API_URL}/tpo/students`);
+        contactsRes = await axios.get(`${API_URL}/tpo/students`, getAuthConfig());
       }
 
       // Map to standardized format
@@ -62,18 +69,22 @@ export const Chat = () => {
       }));
       setContacts(list);
     } catch (e) {
-      console.error(e);
+      console.error('Error fetching chat contacts:', e);
     }
   };
 
   useEffect(() => {
-    fetchAnnouncements();
-    fetchContacts();
-  }, [user]);
+    if (user) {
+      fetchAnnouncements();
+      fetchContacts();
+    }
+  }, [user, token]);
 
   // Scroll to bottom helper
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messageElRef.current) {
+      messageElRef.current.scrollTop = messageElRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -122,10 +133,10 @@ export const Chat = () => {
     setSelectedContact(contact);
     setLoadingMessages(true);
     try {
-      const { data } = await axios.get(`${API_URL}/chat/messages/${contact.id}`);
+      const { data } = await axios.get(`${API_URL}/chat/messages/${contact.id}`, getAuthConfig());
       setMessages(data);
     } catch (e) {
-      console.error(e);
+      console.error('Error loading message history:', e);
     } finally {
       setLoadingMessages(false);
     }
@@ -143,7 +154,7 @@ export const Chat = () => {
       const { data } = await axios.post(`${API_URL}/chat/messages`, {
         recipientId: selectedContact.id,
         message: text,
-      });
+      }, getAuthConfig());
 
       setMessages((prev) => [...prev, data]);
 
@@ -156,7 +167,7 @@ export const Chat = () => {
         });
       }
     } catch (err) {
-      console.error(err);
+      console.error('Error sending message:', err);
     }
   };
 
@@ -169,19 +180,18 @@ export const Chat = () => {
     setNewAnnouncement('');
 
     try {
-      await axios.post(`${API_URL}/chat/announcements`, { message: text });
+      await axios.post(`${API_URL}/chat/announcements`, { message: text }, getAuthConfig());
       fetchAnnouncements();
     } catch (err) {
-      console.error(err);
+      console.error('Error posting TPO announcement:', err);
     }
   };
 
   const isTpoOrAdmin = user?.role === 'tpo' || user?.role === 'admin';
 
   return (
-    <div className="glass-panel border border-white/20 dark:border-slate-800/80 rounded-3xl h-[calc(100vh-140px)] overflow-hidden flex">
-      {/* Sidebar - list of channels/contacts */}
-      <div className="w-80 border-r border-slate-200/50 dark:border-slate-800/50 flex flex-col h-full bg-slate-50/50 dark:bg-slate-900/30">
+    <div className="glass-panel border border-white/20 dark:border-slate-800/80 rounded-3xl overflow-hidden" style={{ display: 'flex', flexDirection: 'row', width: '100%', height: 'calc(100vh - 140px)' }}>
+      <div className="border-r border-slate-200/50 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/30" style={{ width: '320px', minWidth: '320px', flexShrink: 0, display: 'flex', flexDirection: 'column', height: '100%' }}>
         <div className="p-4 border-b border-slate-200/50 dark:border-slate-800/50 flex gap-2">
           <button
             onClick={() => setActiveTab('announcements')}
@@ -230,7 +240,7 @@ export const Chat = () => {
                 }`}
               >
                 <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-bold text-xs shrink-0 text-slate-600 dark:text-slate-300">
-                  {contact.name[0].toUpperCase()}
+                  {contact.name ? contact.name[0].toUpperCase() : 'U'}
                 </div>
                 <div className="overflow-hidden">
                   <h4 className="text-xs font-bold truncate leading-none">{contact.name}</h4>
@@ -244,12 +254,11 @@ export const Chat = () => {
         </div>
       </div>
 
-      {/* Main Chat Panel */}
-      <div className="flex-1 flex flex-col h-full bg-transparent">
+      <div className="bg-transparent" style={{ flex: '1 1 0%', display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, minWidth: 0 }}>
         {/* Right Header */}
         <div className="p-4 border-b border-slate-200/50 dark:border-slate-800/50 flex items-center gap-3 bg-slate-50/20 dark:bg-slate-900/10 shrink-0">
           <div className="w-9 h-9 rounded-full bg-brand-500/10 text-brand-500 flex items-center justify-center font-bold">
-            {selectedContact ? selectedContact.name[0] : <Megaphone className="w-4.5 h-4.5" />}
+            {selectedContact ? (selectedContact.name ? selectedContact.name[0].toUpperCase() : 'U') : <Megaphone className="w-4.5 h-4.5" />}
           </div>
           <div>
             <h3 className="text-xs font-bold text-slate-800 dark:text-white leading-none">
@@ -262,7 +271,7 @@ export const Chat = () => {
         </div>
 
         {/* Message View Area */}
-        <div className="flex-grow overflow-y-auto p-6 space-y-4 bg-slate-50/10 dark:bg-slate-900/5">
+        <div ref={messageElRef} className="flex-grow overflow-y-auto p-6 space-y-4 bg-slate-50/10 dark:bg-slate-900/5">
           {activeTab === 'announcements' ? (
             announcements.length === 0 ? (
               <div className="text-center text-slate-400 text-xs py-12">No announcements posted yet.</div>
@@ -323,7 +332,6 @@ export const Chat = () => {
               );
             })
           )}
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Input Bar */}
